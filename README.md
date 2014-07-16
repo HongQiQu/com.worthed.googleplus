@@ -3,7 +3,7 @@ com.worthed.googleplus
 
 This demo shows how to use OAuth 2.0 for android when accessing a Google API from a web server application. 
 These applications might access a Google API while the user is present at the application or after the user has left the application. This flow requires that the application can keep a secret.
-**See https://developers.google.com/accounts/docs/OAuth2WebServer for token API information.**
+**See https://developers.google.com/accounts/docs/OAuth2WebServer to get OAuth 2.0 information.**
 
 For Google+ API calls that do not need to identify a particular user, you can use an application API key. This is useful for server-side applications, or web applications that do not require the user to sign in with Google.
 **See https://developers.google.com/+/api/oauth to prepare for you application and get more information.**
