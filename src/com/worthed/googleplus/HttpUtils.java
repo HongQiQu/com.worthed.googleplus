@@ -81,7 +81,7 @@ public class HttpUtils {
 			e.printStackTrace();
 			return null;
 		}
-		Log.e(TAG, strResult);
+		Log.w(TAG, strResult);
 		return strResult;
 	}
 
