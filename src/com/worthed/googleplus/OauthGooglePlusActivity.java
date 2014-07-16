@@ -51,6 +51,11 @@ public class OauthGooglePlusActivity extends Activity {
 	public static final String GOOGLE_URL_CODE = "https://accounts.google.com/o/oauth2/device/code";
 	public static final String GOOGLE_URL_TOKEN = "https://accounts.google.com/o/oauth2/token";
 
+	// Maybe useful in the future.
+	public static final String GOOGLE_URL_USERID = "https://www.googleapis.com/plus/v1/people/me?access_token=token&fields=id";
+	// https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=1/fFBGRNJru1FQd44AzqT3Zg
+	// https://developers.google.com/+/api/latest/people/get
+	
 	private WebView oauthWebView;
 
 	@Override
