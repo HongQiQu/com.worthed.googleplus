@@ -33,19 +33,26 @@ public class OauthGooglePlusActivity extends Activity {
 	public static final String GOOGLE_BASE_URL = "https://accounts.google.com/o/oauth2/auth";
 	public static final String GOOGLE_REDIRECT_URI = "https://www.worthed.com/oauth2callback";
 	public static final String GOOGLE_CODE_RESPONSE = "https://oauth2-login-demo.appspot.com/";
-	
-	public static final String GOOGLE_LOGIN_URL = GOOGLE_BASE_URL + "?client_id=" + GOOGLE_CLIENT_ID +
-		    "&redirect_uri=" + GOOGLE_REDIRECT_URI +
-		    "&response_type=code" + "&state=" +
-		    "DGP" + new Random().nextInt() + "FRC" + new Random().nextDouble() +
-		    "&scope=https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.google.com/reader/api/0/subscription https://www.googleapis.com/auth/plus.me" +
-		    "&approval_prompt=force&access_type=offline&data-requestvisibleactions=http://schemas.google.com/AddActivity";
-	
+
+	public static final String GOOGLE_LOGIN_URL = GOOGLE_BASE_URL
+			+ "?client_id="
+			+ GOOGLE_CLIENT_ID
+			+ "&redirect_uri="
+			+ GOOGLE_REDIRECT_URI
+			+ "&response_type=code"
+			+ "&state="
+			+ "DGP"
+			+ new Random().nextInt()
+			+ "FRC"
+			+ new Random().nextDouble()
+			+ "&scope=https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.google.com/reader/api/0/subscription https://www.googleapis.com/auth/plus.me"
+			+ "&approval_prompt=force&access_type=offline&data-requestvisibleactions=http://schemas.google.com/AddActivity";
+
 	public static final String GOOGLE_URL_CODE = "https://accounts.google.com/o/oauth2/device/code";
 	public static final String GOOGLE_URL_TOKEN = "https://accounts.google.com/o/oauth2/token";
-	
+
 	private WebView oauthWebView;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -93,7 +100,7 @@ public class OauthGooglePlusActivity extends Activity {
 		});
 		loading(GOOGLE_LOGIN_URL);
 	}
-	
+
 	private void loading(String url) {
 		Log.d(TAG, "loading HTTP " + url);
 		oauthWebView.getSettings().setJavaScriptEnabled(true);
@@ -102,7 +109,7 @@ public class OauthGooglePlusActivity extends Activity {
 		oauthWebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 		oauthWebView.loadUrl(url);
 	}
-	
+
 	private void handlerUrl(String url) {
 		Log.v(TAG, "handlerUrl()");
 		String code = TokenUtils.getCode(url);
@@ -116,15 +123,15 @@ public class OauthGooglePlusActivity extends Activity {
 			requestToken(code);
 		} else if (!TextUtils.isEmpty(error)) {
 			if (OauthGooglePlusActivity.this != null) {
-				Toast.makeText(OauthGooglePlusActivity.this, "error : " + error,
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(OauthGooglePlusActivity.this,
+						"error : " + error, Toast.LENGTH_SHORT).show();
 			}
 			Log.e(TAG, "error : " + error);
 		} else {
 			Log.w(TAG, "Get no code or token!");
 		}
 	}
-	
+
 	private void requestToken(final String code) {
 		new Thread(new Runnable() {
 			
@@ -154,7 +161,7 @@ public class OauthGooglePlusActivity extends Activity {
 			}
 		}).start();
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
